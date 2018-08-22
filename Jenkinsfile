@@ -4,12 +4,12 @@ node {
         //Using the Pretested integration plugin to checkout out any branch in the ready namespace
         checkout(
             [$class: 'GitSCM', 
-            branches: [[name: '*/ready/**']], 
+            branches: [[name: '**/ready/*']], 
             doGenerateSubmoduleConfigurations: false, 
             extensions: [[$class: 'CleanBeforeCheckout'], 
             pretestedIntegration(gitIntegrationStrategy: squash(), 
             integrationBranch: 'master', 
-            repoName: 'origin/master')], 
+            repoName: 'origin')], 
             submoduleCfg: [], 
             userRemoteConfigs: [[credentialsId: 'thevinge', //remember to change credentials and url.
             url: 'git@github.com:thevinge/jenkins-workshop.git']]])
@@ -23,10 +23,6 @@ node {
        sh 'docker run -i -v $PWD:/usr/src/mymaven -w /usr/src/mymaven --rm maven:3-jdk-8 mvn test'
    }
    
-   stage('publish'){
-        //This publishes the commit if the tests have run without errors
-        pretestedIntegrationPublisher()
-    }
 
    stage('Archive'){
        sh 'docker run -i -v $PWD:/usr/src/mymaven -w /usr/src/mymaven --rm maven:3-jdk-8 mvn site'
@@ -34,5 +30,10 @@ node {
        archiveArtifacts artifacts: 'target/site/*', onlyIfSuccessful: true
        archiveArtifacts artifacts: 'target/gildedrose-*.jar', onlyIfSuccessful: true
    }
+
+    stage('publish'){
+        //This publishes the commit if the tests have run without errors
+        pretestedIntegrationPublisher()
+    }
 
 }
