@@ -1,8 +1,19 @@
 node {
   
-   stage('Repo Clone'){
-       checkout scm
-   }
+  stage("checkout") {
+        //Using the Pretested integration plugin to checkout out any branch in the ready namespace
+        checkout(
+            [$class: 'GitSCM', 
+            branches: [[name: '*/ready/**']], 
+            doGenerateSubmoduleConfigurations: false, 
+            extensions: [[$class: 'CleanBeforeCheckout'], 
+            pretestedIntegration(gitIntegrationStrategy: squash(), 
+            integrationBranch: 'master', 
+            repoName: 'origin')], 
+            submoduleCfg: [], 
+            userRemoteConfigs: [[credentialsId: 'thevinge', //remember to change credentials and url.
+            url: 'git@github.com:thevinge/jenkins-workshop.git']]])
+    }
    
    stage('Clean Build'){
         sh 'docker run -i -v $PWD:/usr/src/mymaven -w /usr/src/mymaven --rm maven:3-jdk-8 mvn clean package'
