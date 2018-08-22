@@ -4,7 +4,7 @@ node {
         //Using the Pretested integration plugin to checkout out any branch in the ready namespace
         checkout(
             [$class: 'GitSCM', 
-            branches: [[name: '**/ready/*']], 
+            branches: [[name: '*/ready/**']], 
             doGenerateSubmoduleConfigurations: false, 
             extensions: [[$class: 'CleanBeforeCheckout'], 
             pretestedIntegration(gitIntegrationStrategy: squash(), 
