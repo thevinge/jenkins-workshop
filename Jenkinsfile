@@ -1,7 +1,7 @@
 node {
   
    stage('Repo Clone'){
-       git branch: 'master', credentialsId: 'a7bafce7-ca72-4b42-b6f4-a454977b7731', url: 'git@github.com:thevinge/jenkins-workshop.git'
+       checkout scm
    }
    
    stage('Clean Build'){
