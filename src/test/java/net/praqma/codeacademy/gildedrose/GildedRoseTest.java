@@ -53,4 +53,15 @@ public class GildedRoseTest {
         assertEquals(50, app.items[0].quality = 50);
     }
 
+    @Test
+    /*
+     * This is the bar test
+     */
+    public void better_test() {
+        Item[] items = new Item[] { new Item("foo", 1, 10), new Item("bar", 2, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("foo", app.items[0].name);
+    }
+
 }
