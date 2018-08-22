@@ -11,7 +11,7 @@ node {
             integrationBranch: 'master', 
             repoName: 'origin')], 
             submoduleCfg: [], 
-            userRemoteConfigs: [[credentialsId: 'thevinge', //remember to change credentials and url.
+            userRemoteConfigs: [[credentialsId: 'a7bafce7-ca72-4b42-b6f4-a454977b7731', //remember to change credentials and url.
             url: 'git@github.com:thevinge/jenkins-workshop.git']]])
     }
    

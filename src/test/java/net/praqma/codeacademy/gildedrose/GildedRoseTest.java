@@ -14,7 +14,7 @@ public class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        // Comment
+        // Comment Test
         assertEquals("foo", app.items[0].name);
     }
 
@@ -70,6 +70,17 @@ public class GildedRoseTest {
      * This is the rose test
      */
     public void roseTest() {
+        Item[] items = new Item[] { new Item("foo", 1, 10), new Item("bar", 2, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("foo", app.items[0].name);
+    }
+
+    @Test
+    /*
+     * This is the rose test
+     */
+    public void Testrose() {
         Item[] items = new Item[] { new Item("foo", 1, 10), new Item("bar", 2, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
