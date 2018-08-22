@@ -50,7 +50,7 @@ public class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("foo", app.items[0].quality = 50);
+        assertEquals(50, app.items[0].quality = 50);
     }
 
 }
