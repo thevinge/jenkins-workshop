@@ -17,4 +17,17 @@ public class GildedRoseTest {
         assertEquals("foo", app.items[0].name);
     }
 
+
+    @Test
+    /*
+     * This is the bar test
+     */
+    public void bar() {
+        Item[] items = new Item[] { new Item("foo", 1, 10), new Item("bar", 2, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        app.
+        assertEquals("bar", app.items[0].name);
+    }
+
 }
