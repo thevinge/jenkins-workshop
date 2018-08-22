@@ -41,4 +41,16 @@ public class GildedRoseTest {
         assertEquals("bar", app.items[1].name);
     }
 
+
+    @Test
+    /*
+     * This is a comment
+     */
+    public void never_over_50() {
+        Item[] items = new Item[] { new Item("foo", 0, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality = 50);
+    }
+
 }
